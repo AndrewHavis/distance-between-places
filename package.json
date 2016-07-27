@@ -1,0 +1,33 @@
+{
+  "name": "distance-between-places",
+  "version": "1.0.0",
+  "description": "An application that will allow you to find the distance between two places on the globe (powered by the Google Places API).",
+  "main": "app.js",
+  "scripts": {
+    "test": "npm test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AndrewHavis/distance-between-places.git"
+  },
+  "keywords": [
+    "google",
+    "places",
+    "geography",
+    "distance",
+    "places",
+    "web",
+    "apps"
+  ],
+  "author": "Andrew Havis",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AndrewHavis/distance-between-places/issues"
+  },
+  "homepage": "https://github.com/AndrewHavis/distance-between-places#readme",
+  "devDependencies": {
+    "dotenv": "^2.0.0",
+    "express": "^4.14.0",
+    "googleplaces": "^0.6.0"
+  }
+}
