@@ -1,18 +1,6 @@
-// Variables
-$textColour: #3a3a3a;
+// Import variables
+@import "partials/variables";
 
-body {
-    color: $textColour;
-    text-align: center;
-}
-
-.container {
-    span.arrow {
-        font-weight: bold;
-        font-size: 1.5em;
-    }
-    h2.subheading {
-        font-weight: bold;
-        font-size: 1em;
-    }
-}
+// Import partials
+@import "partials/body";
+@import "partials/container";

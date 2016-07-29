@@ -1,0 +1,14 @@
+// CSS properties for our main content (within div.container)
+.container {
+    span.arrow {
+        font-weight: bold;
+        font-size: 1.5em;
+    }
+    h2.subheading {
+        font-weight: bold;
+        font-size: $subheadingSize;
+    }
+    strong.distance {
+        font-size: $distanceSize;
+    }
+}

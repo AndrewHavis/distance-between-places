@@ -26,7 +26,7 @@ html(lang="en" data-ng-app="dbpApp")
     body
         .container(data-ng-controller="dbpCtrl")
             .row
-                .col-md-12
+                header.col-md-12
                     h1 Distance Between Places
             .row
                 .col-md-12
@@ -40,6 +40,10 @@ html(lang="en" data-ng-app="dbpApp")
                             span.arrow &rarr;
                         .col-md-5
                             input.form-control(type="text" g-places-autocomplete placeholder="Place 2" data-ng-model="place2")
+            .row
+                .col-md-12
+                    strong(class="distance" data-ng-bind="distance")
+
             .row
                 .col-md-6
                     h2.subheading Result 1

@@ -17,8 +17,8 @@ app.use('/', express.static(__dirname + '/public'));
 app.use('/lib', express.static(__dirname + '/bower_components'));
 
 // API routing
-app.get('/api/place-search', function(req, res) {
-   googlePlaces.placeSearch('Pub', function(err, response) {
+app.get('/api/place-search/:placeQuery', function(req, res) {
+   googlePlaces.placeSearch(req.params.placeQuery, function(err, response) {
        if (!!err) {
            res.send(err);
        }
