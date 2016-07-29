@@ -1,0 +1,49 @@
+doctype html
+html(lang="en" data-ng-app="dbpApp")
+    head
+
+        // Meta properties
+        meta(name="author" content="Andrew Havis")
+
+        // Page title
+        title= "Distance Between Places"
+
+        // Import Google Places API
+        script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places&key=AIzaSyAJCOQ0UbS32XZmN40-48SRAcMlCGXBlBM")
+
+        // Import Angular and Bootstrap libraries
+        script(type="text/javascript" src="/lib/angular/angular.min.js")
+        script(type="text/javascript" src="/lib/angular-google-places-autocomplete/dist/autocomplete.min.js")
+        script(type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js")
+        link(rel="stylesheet" href="/lib/angular-google-places-autocomplete/dist/autocomplete.min.css")
+        link(rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css")
+
+        // Import our own scripts and stylesheets
+        script(type="text/javascript" src="/js/main.js")
+        script(type="text/javascript" src="/js/controllers/dbp.ctrl.js")
+        link(rel="stylesheet" href="/css/styles.css")
+
+    body
+        .container(data-ng-controller="dbpCtrl")
+            .row
+                .col-md-12
+                    h1 Distance Between Places
+            .row
+                .col-md-12
+                    p To find the distance between any two places in the world, simply type them into the two boxes below.
+            .row
+                form
+                    .form-group
+                        .col-md-5
+                            input.form-control(type="text" g-places-autocomplete placeholder="Place 1" data-ng-model="place1")
+                        .col-md-2
+                            span.arrow &rarr;
+                        .col-md-5
+                            input.form-control(type="text" g-places-autocomplete placeholder="Place 2" data-ng-model="place2")
+            .row
+                .col-md-6
+                    h2.subheading Result 1
+                    pre {{place1 | json}}
+                .col-md-6
+                    h2.subheading Result 2
+                    pre {{place2 | json}}

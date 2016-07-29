@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" data-ng-app="dbpApp">
+	<head>
+		<!-- Meta properties-->
+		<meta name="author" content="Andrew Havis">
+		<!-- Page title-->
+		<title>Distance Between Places</title>
+		<!-- Import Google Places API-->
+		<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;libraries=places&amp;key=AIzaSyAJCOQ0UbS32XZmN40-48SRAcMlCGXBlBM"></script>
+		<!-- Import Angular and Bootstrap libraries-->
+		<script type="text/javascript" src="/lib/angular/angular.min.js"></script>
+		<script type="text/javascript" src="/lib/angular-google-places-autocomplete/dist/autocomplete.min.js"></script>
+		<script type="text/javascript" src="/lib/bootstrap/dist/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="/lib/angular-google-places-autocomplete/dist/autocomplete.min.css">
+		<link rel="stylesheet" href="/lib/bootstrap/dist/css/bootstrap.min.css">
+		<!-- Import our own scripts and stylesheets-->
+		<script type="text/javascript" src="/js/main.js"></script>
+		<script type="text/javascript" src="/js/controllers/dbp.ctrl.js"></script>
+		<link rel="stylesheet" href="/css/styles.css">
+	</head>
+	<body>
+		<div class="container" data-ng-controller="dbpCtrl">
+			<div class="row">
+				<div class="col-md-12">
+					<h1>Distance Between Places</h1>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-12">
+					<p>To find the distance between any two places in the world, simply type them into the two boxes below.</p>
+				</div>
+			</div>
+			<div class="row">
+				<form>
+					<div class="form-group">
+						<div class="col-md-5">
+							<input class="form-control" type="text" g-places-autocomplete placeholder="Place 1" data-ng-model="place1">
+						</div>
+						<div class="col-md-2"><span class="arrow">&rarr;</span></div>
+						<div class="col-md-5">
+							<input class="form-control" type="text" g-places-autocomplete placeholder="Place 2" data-ng-model="place2">
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="row">
+				<div class="col-md-6">
+					<h2 class="subheading">Result 1</h2>
+					<pre>{{place1 | json}}</pre>
+				</div>
+				<div class="col-md-6">
+					<h2 class="subheading">Result 2</h2>
+					<pre>{{place2 | json}}</pre>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

@@ -1,19 +1,29 @@
 'use strict';
 
+// Import environment variables
+require('dotenv').config();
+
 // Import Express
-var express = require('express');
-var app = express();
+const express = require('express');
+const app = express();
 
 // Import Google Places functions
-var googlePlaces = require(__dirname + '/server/google-places');
+const googlePlaces = require(__dirname + '/server/google-places');
 
-app.get('/', function(req, res) {
-   googlePlaces.placeSearch('Pub', function(err, res) {
+// Serve anything in the public directory as our main files
+app.use('/', express.static(__dirname + '/public'));
+
+// Serve Bower libraries from /lib
+app.use('/lib', express.static(__dirname + '/bower_components'));
+
+// API routing
+app.get('/api/place-search', function(req, res) {
+   googlePlaces.placeSearch('Pub', function(err, response) {
        if (!!err) {
            res.send(err);
        }
        else {
-           res.json(res);
+           res.json(response);
        }
    });
 });
