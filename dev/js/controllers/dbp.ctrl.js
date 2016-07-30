@@ -8,6 +8,7 @@ app.controller('dbpCtrl', ['$scope', function($scope) {
     $scope.place2 = null;
     $scope.distance = 0;
     $scope.latLong = [];
+    $scope.debug = false; // Set this to true to show the returned JSON from Google Places
     
     console.log($scope);
     

@@ -40,11 +40,10 @@ html(lang="en" data-ng-app="dbpApp")
                             span.arrow &rarr;
                         .col-md-5
                             input.form-control(type="text" g-places-autocomplete placeholder="Place 2" data-ng-model="place2" data-ng-change="calculateDistance()")
-            .row
+            .row(data-ng-show="distance > 0")
                 .col-md-12
                     strong(class="distance") {{distance}} m
-
-            .row
+            .row(data-ng-show="debug")
                 .col-md-6
                     h2.subheading Result 1
                     pre {{place1 | json}}
