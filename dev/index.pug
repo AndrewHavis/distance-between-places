@@ -9,7 +9,7 @@ html(lang="en" data-ng-app="dbpApp")
         title= "Distance Between Places"
 
         // Import Google Places API
-        script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places&key=AIzaSyAJCOQ0UbS32XZmN40-48SRAcMlCGXBlBM")
+        script(type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&libraries=places,geometry&key=AIzaSyAJCOQ0UbS32XZmN40-48SRAcMlCGXBlBM")
 
         // Import Angular and Bootstrap libraries
         script(type="text/javascript" src="/lib/angular/angular.min.js")
@@ -35,14 +35,14 @@ html(lang="en" data-ng-app="dbpApp")
                 form
                     .form-group
                         .col-md-5
-                            input.form-control(type="text" g-places-autocomplete placeholder="Place 1" data-ng-model="place1")
+                            input.form-control(type="text" g-places-autocomplete placeholder="Place 1" data-ng-model="place1" data-ng-change="calculateDistance()")
                         .col-md-2
                             span.arrow &rarr;
                         .col-md-5
-                            input.form-control(type="text" g-places-autocomplete placeholder="Place 2" data-ng-model="place2")
+                            input.form-control(type="text" g-places-autocomplete placeholder="Place 2" data-ng-model="place2" data-ng-change="calculateDistance()")
             .row
                 .col-md-12
-                    strong(class="distance" data-ng-bind="distance")
+                    strong(class="distance") {{distance}} m
 
             .row
                 .col-md-6
