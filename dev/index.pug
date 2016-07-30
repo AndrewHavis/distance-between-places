@@ -40,9 +40,11 @@ html(lang="en" data-ng-app="dbpApp")
                             span.arrow &rarr;
                         .col-md-5
                             input.form-control(type="text" g-places-autocomplete placeholder="Place 2" data-ng-model="place2" data-ng-change="calculateDistance()")
-            .row(data-ng-show="distance > 0")
-                .col-md-12
-                    strong(class="distance") {{distance}} m
+            .row(class="top-buffer" data-ng-show="distance > 0")
+                .col-md-6
+                    strong(class="distance") {{distanceConverted | number: 3}}
+                .col-md-6
+                    select.form-control(data-ng-model="measurements.selectedOption" data-ng-change="convert()" data-ng-options="option.name for option in measurements.availableOptions track by option.divisor")
             .row(data-ng-show="debug")
                 .col-md-6
                     h2.subheading Result 1

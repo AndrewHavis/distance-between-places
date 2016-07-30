@@ -10,5 +10,10 @@
     }
     strong.distance {
         font-size: $distanceSize;
+        top: -0.2em;
+        position: relative;
+    }
+    .top-buffer {
+        margin-top: $rowSpacing;
     }
 }
