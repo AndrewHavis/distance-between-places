@@ -1,4 +1,4 @@
 'use strict';
 
 // Module declaration stub
-angular.module('dbpApp', ['google.places']);
+angular.module('dbpApp', ['google.places', 'ngGeolocation']);

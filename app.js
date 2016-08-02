@@ -27,6 +27,16 @@ app.get('/api/place-search/:placeQuery', function(req, res) {
        }
    });
 });
+app.get('/api/reverse-geocode/:latitude/:longitude', function(req, res) {
+	googlePlaces.reverseGeocode(req.params.latitude, req.params.longitude, function(err, response) {
+		if (!!err) {
+			res.send(err);
+		}
+		else {
+			res.json(response);
+		}
+	});
+});
 
 // start server on the specified port and binding host
 app.listen(8585, '0.0.0.0', function() {

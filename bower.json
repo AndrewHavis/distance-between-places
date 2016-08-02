@@ -27,6 +27,7 @@
   "dependencies": {
     "angular": "^1.5.8",
     "bootstrap": "^3.3.7",
-    "angular-google-places-autocomplete": "^0.2.7"
+    "angular-google-places-autocomplete": "^0.2.7",
+    "ngGeolocation": "~0.0.8"
   }
 }

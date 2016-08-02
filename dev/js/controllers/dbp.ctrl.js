@@ -3,7 +3,7 @@
 // Import module
 var app = angular.module('dbpApp');
 
-app.controller('dbpCtrl', ['$scope', function($scope) {
+app.controller('dbpCtrl', ['$scope', '$geolocation', '$http', function($scope, $geolocation, $http) {
     $scope.place1 = null;
     $scope.place2 = null;
     $scope.distance = 0;
@@ -20,16 +20,42 @@ app.controller('dbpCtrl', ['$scope', function($scope) {
         ],
         selectedOption: {divisor: 1609.3, name: 'miles'}
     };
+	
+	// If we can, use the user's current location as the default for place 1
+	$geolocation.getCurrentPosition({
+		timeout: 60000
+	}).then(function(position) {
+		if (!!position) {
+			$scope.currentLatitude = position.coords.latitude;
+			$scope.currentLongitude = position.coords.longitude;
+			$http.get('/api/reverse-geocode/' + $scope.currentLatitude + '/' + $scope.currentLongitude)
+				.success(function(response) {
+					if (!!response) {
+						$scope.place1 = response.results[0].formatted_address;
+						$scope.latLong[0] = new google.maps.LatLng($scope.currentLatitude, $scope.currentLongitude);
+					}
+					else {
+						$scope.place1 = null;
+					}
+				});
+		}
+	});
     
-    console.log($scope);
+    if (!!$scope.debug) console.log($scope);
     
     // Calculate the distance between our two places
     $scope.calculateDistance = function () {
+		// Get the latitude and longitude
         if ($scope.place1 !== null) {
-            $scope.latLong[0] = new google.maps.LatLng($scope.place1.geometry.location.lat(), $scope.place1.geometry.location.lng());
+			// Don't fire until we've picked an option (this also avoids errors when we're using geolocation)
+			if (typeof $scope.place1.geometry !== 'undefined') {
+				$scope.latLong[0] = new google.maps.LatLng($scope.place1.geometry.location.lat(), $scope.place1.geometry.location.lng());
+			}
         }
         if ($scope.place2 !== null) {
-            $scope.latLong[1] = new google.maps.LatLng($scope.place2.geometry.location.lat(), $scope.place2.geometry.location.lng());
+			if (typeof $scope.place2.geometry !== 'undefined') {
+				$scope.latLong[1] = new google.maps.LatLng($scope.place2.geometry.location.lat(), $scope.place2.geometry.location.lng());
+			}
         }
         if ($scope.place1 !== null && $scope.place2 !== null) {        
             // Now get the two sets of coordinates and calculate the distance between them using Google Maps' geometry library
