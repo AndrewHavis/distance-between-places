@@ -5,6 +5,7 @@ const gulp = require('gulp');
 const pug = require('gulp-pug');
 const sass = require('gulp-sass');
 const copy = require('gulp-copy');
+const sourceMaps = require('gulp-sourcemaps');
 
 // Pug
 gulp.task('pug', function() {
@@ -22,7 +23,9 @@ gulp.task('pug:watch', function() {
 // SASS
 gulp.task('sass', function() {
     return gulp.src('./dev/css/*.scss')
+        .pipe(sourceMaps.init())
         .pipe(sass().on('error', sass.logError))
+        .pipe(sourceMaps.write('./map'))
         .pipe(gulp.dest('./public/css'));
 });
 
